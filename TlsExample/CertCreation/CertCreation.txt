@@ -1,0 +1,7 @@
+Reference : https://gist.github.com/mrcunninghamz/4f4ebbeeb4cfa9667870b8af4db24dc6
+openssl genrsa -out key2.pem 2048
+openssl req -new -sha256 -key key2.pem -out csr2.csr
+openssl req -x509 -sha256 -days 365 -key key2.pem -in csr2.csr -out certificate2.pem
+openssl pkcs12 -export -inkey key2.pem -in certificate2.pem -out certificate2.pfx
+openssl x509 -inform PEM -in certificate2.pem -outform DER -out certificate2.cer
+openssl x509 -noout -fingerprint -sha1 -inform dec -in certificate2.cer
