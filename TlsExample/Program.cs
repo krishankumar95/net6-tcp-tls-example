@@ -10,6 +10,4 @@ var client = new TlsClient();
 var ts = Task.Run(async () => await server.Run(cts.Token));
 var tc = Task.Run(async () => await client.Run(cts.Token));
 
-while (Console.ReadKey().KeyChar != 'q')
-{
-}
+await Task.Delay(TimeSpan.FromSeconds(5));  

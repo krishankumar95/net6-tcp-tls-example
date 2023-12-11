@@ -8,10 +8,6 @@ namespace TlsExample
 {
 	public class TlsServer
 	{
-		public TlsServer()
-		{
-		}
-
 		public async Task Run(CancellationToken cancellationToken)
 		{
             try
@@ -31,9 +27,9 @@ namespace TlsExample
 
                     Console.WriteLine("Client connected. Upgrading connection to TLS..");
 
-                    // Upgrade the connection to use TLS 
+                    // Upgrade the connection to use TLS ; SslProtocols.None leaves the OS to decide the best protocol to use
                     SslStream sslStream = new SslStream(client.GetStream());
-                    sslStream.AuthenticateAsServer(new X509Certificate2("certificate2.pfx"), false, System.Security.Authentication.SslProtocols.None, false);
+                    sslStream.AuthenticateAsServer(new X509Certificate2("certificate2.pfx","",X509KeyStorageFlags.UserKeySet), false, System.Security.Authentication.SslProtocols.None, false);
                     Console.WriteLine($"Server is using TLS protocol : {sslStream.SslProtocol}");
 
                     // Do something with the client connection...

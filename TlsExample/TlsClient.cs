@@ -8,10 +8,6 @@ namespace TlsExample
 {
 	public class TlsClient
     {
-		public TlsClient()
-		{
-		}
-
 		public async Task Run(CancellationToken cancellationToken)
 		{
             try
